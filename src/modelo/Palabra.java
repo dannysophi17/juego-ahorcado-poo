@@ -1,16 +1,16 @@
 package modelo;
 
 public class Palabra {
-    // Texto que el jugador debe adivinar
+    // Guarda el texto de la palabra que se debe adivinar
     private String texto;
 
-    // Categoria a la que pertenece la palabra
+    // Guarda la categoria a la que pertenece la palabra
     private String categoria;
 
-    // Pista escrita para ayudar al jugador
+    // Guarda la pista escrita relacionada con la palabra
     private String pistaEscrita;
 
-    // Constructor principal de la clase
+    // Constructor principal
     public Palabra(String texto, String categoria, String pistaEscrita) {
         this.texto = texto;
         this.categoria = categoria;

@@ -56,7 +56,7 @@ public class VentanaJuego extends JFrame {
         lblIncorrectas = new JLabel("", JLabel.CENTER);
 
         txtLetra = new JTextField();
-        btnProbar = new JButton("Probar letra");
+        btnProbar = new JButton("Adivinar letra");
 
         btnPistaCategoria = new JButton("Pista categoria");
         btnPistaLetra = new JButton("Pista letra");

@@ -11,15 +11,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import modelo.JuegoAhorcado;
+import vista.PanelAhorcado;
 
 public class VentanaJuego extends JFrame {
-    // Instancia principal del juego
     private JuegoAhorcado juego;
-
-    // Panel encargado del dibujo del ahorcado
     private PanelAhorcado panelAhorcado;
 
-    // Componentes principales de la interfaz
     private JLabel lblPalabra;
     private JLabel lblIntentos;
     private JLabel lblIncorrectas;
@@ -39,43 +36,75 @@ public class VentanaJuego extends JFrame {
 
     public void inicializarComponentes() {
         setTitle("Juego del Ahorcado");
-        setSize(700, 450);
+        setSize(800, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
+        setLayout(new BorderLayout(10, 10));
 
+        // Titulo principal de la interfaz
+        JLabel lblTitulo = new JLabel("Juego del Ahorcado", JLabel.CENTER);
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 28));
+        add(lblTitulo, BorderLayout.NORTH);
+
+        // Panel donde se dibuja el ahorcado
         panelAhorcado = new PanelAhorcado();
         add(panelAhorcado, BorderLayout.WEST);
 
-        JPanel panelCentro = new JPanel(new GridLayout(7, 1, 10, 10));
+        // Centro: informacion del juego
+        JPanel panelCentro = new JPanel(new GridLayout(3, 1, 10, 10));
 
         lblPalabra = new JLabel("", JLabel.CENTER);
-        lblPalabra.setFont(new Font("Arial", Font.BOLD, 24));
+        lblPalabra.setFont(new Font("Monospaced", Font.BOLD, 36));
 
         lblIntentos = new JLabel("", JLabel.CENTER);
+        lblIntentos.setFont(new Font("Arial", Font.PLAIN, 18));
+
         lblIncorrectas = new JLabel("", JLabel.CENTER);
-
-        txtLetra = new JTextField();
-        btnProbar = new JButton("Probar letra");
-
-        btnPistaCategoria = new JButton("Pista categoria");
-        btnPistaLetra = new JButton("Pista letra");
-        btnPistaEscrita = new JButton("Pista escrita");
-        btnReiniciar = new JButton("Reiniciar");
+        lblIncorrectas.setFont(new Font("Arial", Font.BOLD, 18));
+        lblIncorrectas.setForeground(new java.awt.Color(200, 0, 0));
 
         panelCentro.add(lblPalabra);
         panelCentro.add(lblIntentos);
         panelCentro.add(lblIncorrectas);
-        panelCentro.add(txtLetra);
-        panelCentro.add(btnProbar);
-        panelCentro.add(btnPistaCategoria);
-        panelCentro.add(btnPistaLetra);
 
         add(panelCentro, BorderLayout.CENTER);
 
+        // Derecha: botones de pistas y reinicio
+        JPanel panelPistas = new JPanel(new GridLayout(4, 1, 10, 10));
+
+        btnPistaCategoria = new JButton("Pista categoria");
+        btnPistaCategoria.setBackground(new java.awt.Color(46, 204, 113));
+        btnPistaCategoria.setForeground(java.awt.Color.WHITE);
+
+        btnPistaLetra = new JButton("Pista letra");
+        btnPistaLetra.setBackground(new java.awt.Color(52, 152, 219));
+        btnPistaLetra.setForeground(java.awt.Color.WHITE);
+
+        btnPistaEscrita = new JButton("Pista escrita");
+        btnPistaEscrita.setBackground(new java.awt.Color(230, 126, 34));
+        btnPistaEscrita.setForeground(java.awt.Color.WHITE);
+
+        btnReiniciar = new JButton("Reiniciar");
+        btnReiniciar.setBackground(new java.awt.Color(189, 195, 199));
+
+        panelPistas.add(btnPistaCategoria);
+        panelPistas.add(btnPistaLetra);
+        panelPistas.add(btnPistaEscrita);
+        panelPistas.add(btnReiniciar);
+
+        add(panelPistas, BorderLayout.EAST);
+
+        // Sur: entrada de letras
         JPanel panelSur = new JPanel();
-        panelSur.add(btnPistaEscrita);
-        panelSur.add(btnReiniciar);
+
+        txtLetra = new JTextField(3);
+        txtLetra.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        btnProbar = new JButton("Adivinar");
+
+        panelSur.add(new JLabel("Escribe una letra: "));
+        panelSur.add(txtLetra);
+        panelSur.add(btnProbar);
 
         add(panelSur, BorderLayout.SOUTH);
     }
@@ -84,7 +113,6 @@ public class VentanaJuego extends JFrame {
         btnProbar.addActionListener(e -> {
             String entrada = txtLetra.getText().trim().toLowerCase();
 
-            // Validacion basica de entrada
             if (entrada.isEmpty()) {
                 mostrarMensaje("Ingresa una letra.");
                 return;
@@ -105,6 +133,7 @@ public class VentanaJuego extends JFrame {
             if (juego.letraYaFueUsada(letra)) {
                 mostrarMensaje("Esa letra ya fue usada.");
                 txtLetra.setText("");
+                txtLetra.requestFocus();
                 return;
             }
 
@@ -118,6 +147,7 @@ public class VentanaJuego extends JFrame {
 
             actualizarVista();
             txtLetra.setText("");
+            txtLetra.requestFocus();
 
             if (juego.yaGano()) {
                 mostrarMensaje("Ganaste. La palabra era: " + juego.getPalabraActual().getTexto());

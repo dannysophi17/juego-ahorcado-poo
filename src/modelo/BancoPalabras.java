@@ -13,7 +13,7 @@ public class BancoPalabras {
     }
 
     // Aqui se cargan las palabras del banco.
-    // La idea es que este archivo quede como base de datos simple del proyecto.
+    // Base de datos simple del proyecto.
     public void cargarPalabras() {
         // Animales
         palabras.add(new Palabra("gato", "animales", "Es una mascota"));
@@ -45,12 +45,12 @@ public class BancoPalabras {
         palabras.add(new Palabra("rinoceronte", "animales", "Tiene cuerno"));
         palabras.add(new Palabra("hipopotamo", "animales", "Muy pesado"));
         palabras.add(new Palabra("ardilla", "animales", "Le gustan las nueces"));
-        palabras.add(new Palabra("raton", "animales", "Pequeno roedor"));
-        palabras.add(new Palabra("hamster", "animales", "Mascota pequena"));
+        palabras.add(new Palabra("raton", "animales", "Pequeño roedor"));
+        palabras.add(new Palabra("hamster", "animales", "Mascota pequeña"));
         palabras.add(new Palabra("serpiente", "animales", "Se arrastra"));
         palabras.add(new Palabra("iguana", "animales", "Reptil"));
         palabras.add(new Palabra("cocodrilo", "animales", "Vive en pantanos"));
-        palabras.add(new Palabra("lagarto", "animales", "Reptil pequeno"));
+        palabras.add(new Palabra("lagarto", "animales", "Reptil pequeño"));
         palabras.add(new Palabra("pinguino", "animales", "Vive en hielo"));
         palabras.add(new Palabra("flamenco", "animales", "Ave rosada"));
         palabras.add(new Palabra("abeja", "animales", "Produce miel"));
@@ -68,7 +68,7 @@ public class BancoPalabras {
         palabras.add(new Palabra("shrek", "peliculas", "Ogro verde"));
         palabras.add(new Palabra("cars", "peliculas", "Autos que hablan"));
         palabras.add(new Palabra("moana", "peliculas", "Aventura en el mar"));
-        palabras.add(new Palabra("barbie", "peliculas", "Muneca famosa"));
+        palabras.add(new Palabra("barbie", "peliculas", "Muñeca famosa"));
         palabras.add(new Palabra("up", "peliculas", "Casa con globos"));
         palabras.add(new Palabra("matrix", "peliculas", "Mundo virtual"));
         palabras.add(new Palabra("joker", "peliculas", "Villano famoso"));
@@ -141,7 +141,7 @@ public class BancoPalabras {
         palabras.add(new Palabra("salchipapa", "platos tipicos", "Muy popular"));
         palabras.add(new Palabra("mazamorra", "platos tipicos", "Postre tradicional"));
         palabras.add(new Palabra("natilla", "platos tipicos", "Postre navideno"));
-        palabras.add(new Palabra("bunuelo", "platos tipicos", "Redondo y frito"));
+        palabras.add(new Palabra("buñuelo", "platos tipicos", "Redondo y frito"));
 
         // Ciudades
         palabras.add(new Palabra("armenia", "ciudades", "Ciudad del Quindio"));

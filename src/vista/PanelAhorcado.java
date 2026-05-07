@@ -1,25 +1,23 @@
 package vista;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 public class PanelAhorcado extends JPanel {
-    // Guarda la cantidad de errores para saber que parte del muñeco se dibuja
     private int errores;
 
     public PanelAhorcado() {
         errores = 0;
-
-        // Le damos tamaño al panel para que el dibujo sí se vea en la ventana
         setPreferredSize(new Dimension(300, 350));
+        setBackground(Color.WHITE);
     }
 
     public void setErrores(int errores) {
         this.errores = errores;
-
-        // Cada vez que cambian los errores, se vuelve a pintar el panel
         repaint();
     }
 
@@ -28,14 +26,15 @@ public class PanelAhorcado extends JPanel {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
+        g2.setStroke(new BasicStroke(2));
+        g2.setColor(new Color(40, 40, 40));
 
         // Estructura base del ahorcado
-        g2.drawLine(50, 300, 180, 300);   // base
-        g2.drawLine(115, 300, 115, 50);   // poste vertical
-        g2.drawLine(115, 50, 230, 50);    // parte superior
-        g2.drawLine(230, 50, 230, 80);    // cuerda inicial
+        g2.drawLine(50, 300, 180, 300);
+        g2.drawLine(115, 300, 115, 50);
+        g2.drawLine(115, 50, 230, 50);
+        g2.drawLine(230, 50, 230, 80);
 
-        // Cada error dibuja una parte del personaje
         if (errores >= 1) {
             g2.drawOval(205, 80, 50, 50); // cabeza
         }
@@ -61,7 +60,14 @@ public class PanelAhorcado extends JPanel {
         }
 
         if (errores >= 7) {
-            g2.drawLine(215, 70, 245, 70); // cuerda final
+            // Cuerda final y ojos en X para mostrar que perdió
+            g2.drawLine(230, 50, 230, 75);
+
+            g2.drawLine(215, 95, 223, 103);
+            g2.drawLine(223, 95, 215, 103);
+
+            g2.drawLine(237, 95, 245, 103);
+            g2.drawLine(245, 95, 237, 103);
         }
     }
 }
